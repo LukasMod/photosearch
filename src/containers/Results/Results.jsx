@@ -1,36 +1,81 @@
 import React, { useState, useEffect } from 'react';
+import { InputSearch } from '../../components/InputSearch';
+import { Image } from '../../components/Image';
+import { ModalImage } from '../../components/ModalImage';
 
-// https://api.unsplash.com/search/photos?query=nature&client_id=xh3eA0B15NkA-iCPrN_KdhybMqz49n7gxU2D1gjOj0E
-// import natureData from '../../../public/API/natureData.json';
+const urlAPIdummy = 'API/natureData.json';
 
-const Results = () => {
+const Results = ({
+  clientId,
+  handleSearch,
+  search,
+  handleValidate,
+  acceptSearch,
+}) => {
   const [images, setImages] = useState([]);
+  const [error, setError] = useState(false);
+  const [showedModal, setShowedModal] = useState(false);
+  const [imageClicked, setImageClicked] = useState({});
 
-  const getData = () => {
-    fetch('API/natureData.json')
-      // .then((response) => {
-      //   if (response.ok) return response;
-      //   throw new Error(response.status);
-      // })
-      .then((response) => response.json())
-      .then((data) => {
-        setImages(data.results);
-      });
-  };
+  const urlAPI = ` https://api.unsplash.com/search/photos?&client_id=${clientId}&query=${search}`;
 
   useEffect(() => {
-    getData();
-  }, []);
+    if (acceptSearch) {
+      fetch(urlAPIdummy)
+        .then((response) => response.json())
+        .then((data) => {
+          setImages(data.results);
+          handleValidate(false);
+          console.log(urlAPI);
+        })
+        .catch((error) => setError(true));
+    }
+  }, [acceptSearch, urlAPI, handleValidate]);
+
+  const handleModal = (boolean) => {
+    setShowedModal(boolean);
+  };
+
+  const showModal = () => {
+    setShowedModal(true);
+  };
+
+  const hideModal = () => {
+    setShowedModal(false);
+  };
+
+  const handleImageClick = (imageData) => {
+    console.log(imageData);
+    setImageClicked(imageData);
+  };
 
   return (
     <div className="Results">
+      <InputSearch
+        handleSearch={handleSearch}
+        search={search}
+        handleValidate={handleValidate}
+      />
       <div className="Results__wrapper">
         <h1 className="Results__title">Your results</h1>
         <div className="ResultsList">
           {images.map((data) => (
-            <p key={data.id}>{data.description}</p>
+            <Image
+              key={data.id}
+              data={data}
+              showModal={showModal}
+              handleImageClick={handleImageClick}
+            />
           ))}
         </div>
+        {showedModal && (
+          <ModalImage
+            show={showedModal}
+            handleClose={hideModal}
+            imageClicked={imageClicked}>
+            <p>Modal</p>
+          </ModalImage>
+        )}
       </div>
     </div>
   );
