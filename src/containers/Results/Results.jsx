@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { InputSearch } from '../../components/InputSearch';
 import { Image } from '../../components/Image';
+import { Modal } from '../../components/Modal';
 import { ModalImage } from '../../components/ModalImage';
 
 const urlAPIdummy = 'API/natureData.json';
@@ -32,21 +33,17 @@ const Results = ({
     }
   }, [acceptSearch, urlAPI, handleValidate]);
 
-  const handleModal = (boolean) => {
-    setShowedModal(boolean);
-  };
-
   const showModal = () => {
     setShowedModal(true);
-  };
-
-  const hideModal = () => {
-    setShowedModal(false);
   };
 
   const handleImageClick = (imageData) => {
     console.log(imageData);
     setImageClicked(imageData);
+  };
+
+  const toggleModal = () => {
+    setShowedModal(!showedModal);
   };
 
   return (
@@ -68,14 +65,15 @@ const Results = ({
             />
           ))}
         </div>
-        {showedModal && (
-          <ModalImage
-            show={showedModal}
-            handleClose={hideModal}
-            imageClicked={imageClicked}>
-            <p>Modal</p>
-          </ModalImage>
-        )}
+
+        {showedModal ? (
+          <Modal>
+            <button className="Modal__closeButton" onClick={toggleModal}>
+              X
+            </button>
+            <ModalImage imageClicked={imageClicked} />
+          </Modal>
+        ) : null}
       </div>
     </div>
   );
