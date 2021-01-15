@@ -68,10 +68,7 @@ const Results = ({
 
         {showedModal ? (
           <Modal>
-            <button className="Modal__closeButton" onClick={toggleModal}>
-              X
-            </button>
-            <ModalImage imageClicked={imageClicked} />
+            <ModalImage imageClicked={imageClicked} toggleModal={toggleModal} />
           </Modal>
         ) : null}
       </div>

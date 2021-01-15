@@ -1,3 +1,5 @@
+@import './constants/Colors.scss';
+
 * {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
@@ -5,4 +7,5 @@
 
 .App {
   text-align: center;
+  color: $color-font-1;
 }
