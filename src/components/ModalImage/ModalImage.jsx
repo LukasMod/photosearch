@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
@@ -6,14 +6,30 @@ import './style.scss';
 
 const ModalImage = ({ imageClicked, toggleModal }) => {
   const { user, alt_description, description, urls, tags } = imageClicked;
+  const modalImageContainer = useRef(null);
 
   const tagsWords = tags.map((data) => {
     return ` ${data.title} `;
   });
 
-  console.log();
+  useEffect(() => {
+    window.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (
+      modalImageContainer.current &&
+      !modalImageContainer.current.contains(event.target)
+    ) {
+      toggleModal();
+    }
+  };
+
   return (
-    <div className="ModalImage">
+    <div className="ModalImage" ref={modalImageContainer}>
       <FontAwesomeIcon
         icon={faWindowClose}
         className={'ModalImage__closeButton'}
