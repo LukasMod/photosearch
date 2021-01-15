@@ -1,6 +1,6 @@
 import React from 'react';
-
-const Image = ({ data, showModal, handleModal, handleImageClick }) => {
+import './style.scss';
+const Image = ({ data, showModal, handleImageClick }) => {
   const handleClick = (data) => {
     showModal();
     handleImageClick(data);
@@ -8,8 +8,11 @@ const Image = ({ data, showModal, handleModal, handleImageClick }) => {
 
   return (
     <div className="Image" onClick={() => handleClick(data)}>
-      <p>{data.description}</p>
-      <img src={data.urls.small} alt="" />
+      <img
+        className="Image__img"
+        src={data.urls.small}
+        alt={data.alt_description}
+      />
     </div>
   );
 };

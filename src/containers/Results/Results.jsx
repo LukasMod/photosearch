@@ -4,6 +4,8 @@ import { Image } from '../../components/Image';
 import { Modal } from '../../components/Modal';
 import { ModalImage } from '../../components/ModalImage';
 
+import './style.scss';
+
 const urlAPIdummy = 'API/natureData.json';
 
 const Results = ({
@@ -55,7 +57,7 @@ const Results = ({
       />
       <div className="Results__wrapper">
         <h1 className="Results__title">Your results</h1>
-        <div className="ResultsList">
+        <div className="Results__list">
           {images.map((data) => (
             <Image
               key={data.id}

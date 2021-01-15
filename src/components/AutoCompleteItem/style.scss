@@ -1,0 +1,15 @@
+.AutoCompleteItem {
+  cursor: pointer;
+
+  &:active,
+  &:hover {
+    background-color: #e1e3e5;
+    border-color: #d3d5d7;
+  }
+  &__result {
+    text-align: left;
+    font-size: 1em;
+    padding-left: 0.5em;
+    margin: 0.2em;
+  }
+}
