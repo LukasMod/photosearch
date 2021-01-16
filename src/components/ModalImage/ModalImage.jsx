@@ -48,8 +48,11 @@ const ModalImage = ({ imageClicked, toggleModal }) => {
           <h3 className="ModalImage__description">
             {description ? description : 'Untitled'}
           </h3>
-          <p className="ModalImage__name">
-            by {user.name ? user.name : 'unknown'}
+          <p className="ModalImage__user">
+            by {user.name ? user.name : 'unknown'} from{' '}
+            {user.location
+              ? user.location.charAt(0).toUpperCase() + user.location.slice(1)
+              : 'somewhere'}
           </p>
           <p className="ModalImage__tags">
             Tags: {tagsWords.length !== 0 ? tagsWords : 'none'}
