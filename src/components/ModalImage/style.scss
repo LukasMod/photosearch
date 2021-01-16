@@ -18,28 +18,41 @@
       color: $color-font-1;
     }
   }
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
   &__info {
     display: flex;
-    align-items: flex-end;
-    padding-bottom: 0.5em;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 1em;
+    flex-basis: 20%;
+    margin-right: 3em;
+  }
+  &__description,
+  &__name,
+  &__tags {
+    text-align: left;
+    margin: 0;
   }
   &__description {
-    text-align: left;
-    font-size: 1.5em;
-    margin: 0 0.7em 0 0;
+    font-size: 1.2em;
   }
   &__name {
-    margin: 0 3em 0 0;
-    font-size: 1.2em;
-    padding-bottom: 0.1em;
+    font-size: 0.8em;
   }
   &__tags {
-    margin: 0;
-    font-size: 1.2em;
-    padding-bottom: 0.1em;
+    font-size: 1em;
+    padding-top: 1em;
   }
-
+  &__image-container {
+    flex-basis: 80%;
+  }
   &__image {
-    width: 100%;
+    // max-width: 40%;
+    max-height: 90vh;
+    width: auto;
+    // height: auto;
   }
 }

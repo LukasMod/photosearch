@@ -35,22 +35,27 @@ const ModalImage = ({ imageClicked, toggleModal }) => {
         className={'ModalImage__closeButton'}
         onClick={toggleModal}
       />
-      <div className="ModalImage__info">
-        <h3 className="ModalImage__description">
-          {description ? description : 'Untitled'}
-        </h3>
-        <p className="ModalImage__name">
-          by {user.name ? user.name : 'unknown'}
-        </p>
-        <p className="ModalImage__tags">
-          Tags: {tagsWords.length !== 0 ? tagsWords : 'none'}
-        </p>
+      <div className="ModalImage__wrapper">
+        <div className="ModalImage__image-container">
+          <img
+            className="ModalImage__image"
+            src={urls.regular}
+            alt={alt_description}
+          />
+        </div>
+
+        <div className="ModalImage__info">
+          <h3 className="ModalImage__description">
+            {description ? description : 'Untitled'}
+          </h3>
+          <p className="ModalImage__name">
+            by {user.name ? user.name : 'unknown'}
+          </p>
+          <p className="ModalImage__tags">
+            Tags: {tagsWords.length !== 0 ? tagsWords : 'none'}
+          </p>
+        </div>
       </div>
-      <img
-        className="ModalImage__image"
-        src={urls.regular}
-        alt={alt_description}
-      />
     </div>
   );
 };
