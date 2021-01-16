@@ -19,28 +19,28 @@ const Results = ({
   const [error, setError] = useState(false);
   const [showedModal, setShowedModal] = useState(false);
   const [imageClicked, setImageClicked] = useState({});
+  const [resultsName, setResultsName] = useState('');
 
   const urlAPI = ` https://api.unsplash.com/search/photos?&client_id=${clientId}&query=${search}`;
 
   useEffect(() => {
     if (acceptSearch) {
-      fetch(urlAPIdummy)
+      fetch(urlAPI)
         .then((response) => response.json())
         .then((data) => {
           setImages(data.results);
           handleValidate(false);
-          console.log(urlAPI);
+          setResultsName(search);
         })
         .catch((error) => setError(true));
     }
-  }, [acceptSearch, urlAPI, handleValidate]);
+  }, [acceptSearch, urlAPI, handleValidate, search]);
 
   const showModal = () => {
     setShowedModal(true);
   };
 
   const handleImageClick = (imageData) => {
-    console.log(imageData);
     setImageClicked(imageData);
   };
 
@@ -56,17 +56,24 @@ const Results = ({
         handleValidate={handleValidate}
       />
       <div className="Results__wrapper">
-        <h1 className="Results__title">Your results</h1>
-        <div className="Results__list">
-          {images.map((data) => (
-            <Image
-              key={data.id}
-              data={data}
-              showModal={showModal}
-              handleImageClick={handleImageClick}
-            />
-          ))}
-        </div>
+        <h3 className="Results__title">
+          {' '}
+          {images.length > 0
+            ? `Your results for: ${resultsName}`
+            : `Sorry, we couldn't find it. Please try again with a different phrase.`}
+        </h3>
+        {images.length > 0 && (
+          <div className="Results__list">
+            {images.map((data) => (
+              <Image
+                key={data.id}
+                data={data}
+                showModal={showModal}
+                handleImageClick={handleImageClick}
+              />
+            ))}
+          </div>
+        )}
 
         {showedModal ? (
           <Modal>
