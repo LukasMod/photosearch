@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, Results, PageNotFound } from './containers';
+import { Home, Results, PageNotFound, Footer } from './containers';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,9 +14,8 @@ function App() {
   const [acceptSearch, setAcceptSearch] = useState(false);
   const clientId = 'xh3eA0B15NkA-iCPrN_KdhybMqz49n7gxU2D1gjOj0E';
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    console.log(search);
+  const handleSearch = (text) => {
+    setSearch(text);
   };
 
   const handleValidate = (boolean) => {
@@ -49,6 +48,7 @@ function App() {
           />
           <Redirect to="page-not-found" />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
