@@ -1,4 +1,10 @@
+@import '../../constants/Breakpoints.scss';
+
 .Home {
+  height: 85vh;
+  @include for-tablet-portrait-up {
+    height: 90vh;
+  }
   &__wrapper {
     margin: 0 auto;
   }

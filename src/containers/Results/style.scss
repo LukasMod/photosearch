@@ -1,4 +1,9 @@
+@import '../../constants/Breakpoints.scss';
 .Results {
+  min-height: 85vh;
+  @include for-tablet-portrait-up {
+    height: 90vh;
+  }
   &__list {
     display: flex;
     flex-wrap: wrap;
