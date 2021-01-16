@@ -11,5 +11,11 @@
     font-size: 1em;
     padding-left: 0.5em;
     margin: 0.2em;
+    &:hover {
+      background-color: blue;
+    }
+  }
+  &--active {
+    background-color: red;
   }
 }
