@@ -51,34 +51,38 @@ const Results = () => {
     setShowedModal(!showedModal);
   };
 
+  const showResultsList = () => {
+    if (images.length > 0) {
+      return images.map((data) => (
+        <Image
+          key={data.id}
+          data={data}
+          showModal={showModal}
+          handleImageClick={handleImageClick}
+        />
+      ));
+    }
+  };
+
+  const showTitle = () => {
+    if (error)
+      return `We have some problems with server (error: ${error}). Please, wait 5 minutes and try again.`;
+    else if (!error && images.length > 0)
+      return `Your results for: ${resultsName}`;
+    else
+      return `Sorry, we couldn't find it. Please try again with a different phrase.`;
+  };
+
   return (
     <div className="Results">
       <div className="Results__wrapper">
-        <h3 className="Results__title">
-          {error
-            ? `We have some problems with server (error: ${error}). Please, wait 5 minutes and try again.`
-            : images.length > 0
-            ? `Your results for: ${resultsName}`
-            : `Sorry, we couldn't find it. Please try again with a different phrase.`}
-        </h3>
-        {images.length > 0 && (
-          <div className="Results__list">
-            {images.map((data) => (
-              <Image
-                key={data.id}
-                data={data}
-                showModal={showModal}
-                handleImageClick={handleImageClick}
-              />
-            ))}
-          </div>
-        )}
-
-        {showedModal ? (
+        <h3 className="Results__title">{showTitle()}</h3>
+        <div className="Results__list"> {showResultsList()}</div>
+        {showedModal && (
           <Modal>
             <ModalImage imageClicked={imageClicked} toggleModal={toggleModal} />
           </Modal>
-        ) : null}
+        )}
       </div>
     </div>
   );
