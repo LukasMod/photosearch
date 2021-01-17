@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Home, Results, PageNotFound, Footer } from './containers';
+import { Home, Results, PageNotFound, Header, Footer } from './containers';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
-
 import './App.scss';
 
 function App() {
@@ -32,8 +31,14 @@ function App() {
               search={search}
               handleValidate={handleValidate}
             />
+            <Footer />
           </Route>
           <Route path="/results">
+            <Header
+              handleSearch={handleSearch}
+              search={search}
+              handleValidate={handleValidate}
+            />
             <Results
               clientId={clientId}
               handleSearch={handleSearch}
@@ -41,6 +46,8 @@ function App() {
               handleValidate={handleValidate}
               acceptSearch={acceptSearch}
             />
+
+            <Footer />
           </Route>
           <Route
             path="/page-not-found"
@@ -48,7 +55,6 @@ function App() {
           />
           <Redirect to="page-not-found" />
         </Switch>
-        <Footer />
       </div>
     </Router>
   );
