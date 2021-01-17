@@ -2,7 +2,7 @@
 * Description:  PhotoSearch with Unsplash API. 
 * Author: Lukasz Modzelewski 
 * React (router, context, ref, hooks), HTML, CSS (SCSS, BEM), RWD
-
+* DEMO: https://lm-photosearch.herokuapp.com/
 ---
 
 ### How to run (dev mode)
