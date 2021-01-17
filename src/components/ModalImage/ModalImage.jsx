@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,22 +11,24 @@ const ModalImage = ({ imageClicked, toggleModal }) => {
   const tagsWords = tags.map((data) => {
     return ` ${data.title} `;
   });
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (
+        modalImageContainer.current &&
+        !modalImageContainer.current.contains(event.target)
+      ) {
+        toggleModal();
+      }
+    },
+    [toggleModal]
+  );
 
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
     return () => {
       window.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
-
-  const handleClickOutside = (event) => {
-    if (
-      modalImageContainer.current &&
-      !modalImageContainer.current.contains(event.target)
-    ) {
-      toggleModal();
-    }
-  };
+  }, [handleClickOutside]);
 
   return (
     <div className="ModalImage" ref={modalImageContainer}>
