@@ -21,15 +21,34 @@ const InputSearch = () => {
 
   const commonWords = commonWordsData.commonWords;
 
+  const scrollIntoView = (position) => {
+    if (searchResultRef.current !== null) {
+      searchResultRef.current.parentNode.scrollTo({
+        top: position,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const suggestions = useMemo(() => {
-    if (!search) {
+    if (searchInput.current.value === '') {
       return commonWords;
     } else {
+      setCursor(-1);
+      scrollIntoView(0);
       return commonWords.filter((item) =>
         item.toLowerCase().includes(search.toLowerCase())
       );
     }
   }, [commonWords, search]);
+
+  useEffect(() => {
+    if (cursor < 0 || cursor > suggestions.length || !searchResultRef) {
+      return () => {};
+    }
+    let listItems = Array.from(searchResultRef.current.children);
+    listItems[cursor] && scrollIntoView(listItems[cursor].offsetTop);
+  }, [cursor, suggestions.length]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -46,7 +65,12 @@ const InputSearch = () => {
     };
   }, []);
 
-  const showSuggestion = () => setIsVisible(true);
+  const showSuggestion = () => {
+    if (searchInput.current.value.length > 2) {
+      setCursor(-1);
+      setIsVisible(true);
+    }
+  };
   const hideSuggestion = () => {
     setCursor(-1);
     setIsVisible(false);
@@ -69,12 +93,16 @@ const InputSearch = () => {
     history.push('/results');
   };
 
+  const handleHoverItem = (item) => {
+    setCursor(item);
+  };
+
   const performSearch = (text) => {
+    history.push('/results');
     setNotEnoughLetters(false);
     handleSearch(text);
     handleValidate(true);
     hideSuggestion();
-    history.push('/results');
     searchInput.current.value = '';
   };
 
@@ -127,6 +155,7 @@ const InputSearch = () => {
           onChange={handleChange}
           onKeyDown={(e) => keyboardNavigation(e)}
         />
+        <button className="InputSearch__searchButton">button</button>
       </div>
 
       {isVisible && (
@@ -139,6 +168,7 @@ const InputSearch = () => {
                   item={item}
                   handleSelectItem={() => handleSelectItem(item)}
                   isHighLighted={cursor === index ? true : false}
+                  handleHoverItem={() => handleHoverItem(index)}
                 />
               ))
             ) : (

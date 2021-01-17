@@ -69,6 +69,7 @@ const Results = () => {
       return `We have some problems with server (error: ${error}). Please, wait 5 minutes and try again.`;
     else if (!error && images.length > 0)
       return `Your results for: ${resultsName}`;
+    else if (!error && images.length === 0) return `Loading...`;
     else
       return `Sorry, we couldn't find it. Please try again with a different phrase.`;
   };
