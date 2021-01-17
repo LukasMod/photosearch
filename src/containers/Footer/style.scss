@@ -7,9 +7,6 @@
   padding: 1em;
   background-color: $color-font-1;
   color: $color-font-3;
-  @include for-tablet-portrait-up {
-    min-height: 10vh;
-  }
 
   &a:link,
   a:visited {
@@ -41,7 +38,6 @@
       cursor: pointer;
     }
   }
-
   &__rights {
     margin-top: 0.5em;
     text-align: center;

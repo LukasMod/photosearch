@@ -25,10 +25,11 @@ function App() {
               <Results />
               <Footer />
             </Route>
-            <Route
-              path="/page-not-found"
-              render={() => <PageNotFound path="/" />}
-            />
+            <Route path="/page-not-found">
+              <Home />
+              <PageNotFound path="/" />
+              <Footer />
+            </Route>
             <Redirect to="page-not-found" />
           </Switch>
         </div>

@@ -6,9 +6,6 @@ import { ModalImage } from '../../components/ModalImage';
 
 import './style.scss';
 
-//uncomment if you need static data with unsplash query="nature"
-// const urlAPIdummy = 'API/natureData.json';
-
 const Results = () => {
   const { clientId, search, handleValidate, acceptSearch } = useContext(
     StoreContext
@@ -69,7 +66,6 @@ const Results = () => {
       return `We have some problems with server (error: ${error}). Please, wait 5 minutes and try again.`;
     else if (!error && images.length > 0)
       return `Your results for: ${resultsName}`;
-    else if (!error && images.length === 0) return `Loading...`;
     else
       return `Sorry, we couldn't find it. Please try again with a different phrase.`;
   };

@@ -2,9 +2,25 @@
 @import '../../constants/Breakpoints.scss';
 
 .InputSearch {
-  width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__search-button {
+    font-size: 2rem;
+    color: white;
+    @include for-desktop-up {
+      visibility: hidden;
+    }
+  }
+  &__input-wrapper {
+    position: relative;
+    @include for-desktop-up {
+      min-width: 400px;
+    }
+  }
   &__input {
     width: 90%;
     padding: 0.5em;
@@ -29,6 +45,7 @@
       }
     }
   }
+
   &__error-message {
     color: red;
   }
@@ -40,8 +57,9 @@
   &__results {
     position: absolute;
     background-color: white;
-    width: 100%;
-    max-height: 350px;
+    width: 86%;
+    right: 7%;
+    max-height: 300px;
     overflow-y: auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
   }

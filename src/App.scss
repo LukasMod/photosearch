@@ -3,7 +3,6 @@
 * {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  // padding: 0;
   margin: 0;
 
   &:focus {
@@ -14,6 +13,5 @@
 .App {
   text-align: center;
   color: $color-font-1;
-  // height: 90vh;
   width: 100%;
 }

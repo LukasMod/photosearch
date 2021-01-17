@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect, useMemo, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AutoCompleteItem } from '../AutoCompleteItem';
 import { StoreContext } from '../../store/StoreProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import commonWordsData from './commonWords.json';
 
@@ -155,28 +157,32 @@ const InputSearch = () => {
           onChange={handleChange}
           onKeyDown={(e) => keyboardNavigation(e)}
         />
-        <button className="InputSearch__searchButton">button</button>
-      </div>
 
-      {isVisible && (
-        <div className="InputSearch__results">
-          <ul className="InputSearch__list-group" ref={searchResultRef}>
-            {suggestions.length > 0 ? (
-              suggestions.map((item, index) => (
-                <AutoCompleteItem
-                  key={item}
-                  item={item}
-                  handleSelectItem={() => handleSelectItem(item)}
-                  isHighLighted={cursor === index ? true : false}
-                  handleHoverItem={() => handleHoverItem(index)}
-                />
-              ))
-            ) : (
-              <AutoCompleteItem />
-            )}
-          </ul>
-        </div>
-      )}
+        {isVisible && (
+          <div className="InputSearch__results">
+            <ul className="InputSearch__list-group" ref={searchResultRef}>
+              {suggestions.length > 0 ? (
+                suggestions.map((item, index) => (
+                  <AutoCompleteItem
+                    key={item}
+                    item={item}
+                    handleSelectItem={() => handleSelectItem(item)}
+                    isHighLighted={cursor === index ? true : false}
+                    handleHoverItem={() => handleHoverItem(index)}
+                  />
+                ))
+              ) : (
+                <AutoCompleteItem />
+              )}
+            </ul>
+          </div>
+        )}
+      </div>
+      <FontAwesomeIcon
+        icon={faSearch}
+        className={'InputSearch__search-button'}
+        onClick={() => performSearch(searchInput.current.value)}
+      />
     </div>
   );
 };

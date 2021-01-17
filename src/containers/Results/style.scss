@@ -2,9 +2,6 @@
 @import '../../constants/Colors.scss';
 .Results {
   min-height: 75vh;
-  @include for-tablet-portrait-up {
-    min-height: 75vh;
-  }
   &__title {
     color: $color-font-1;
     padding: 0.25em 0;

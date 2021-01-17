@@ -1,9 +1,10 @@
 @import '../../constants/Colors.scss';
+@import '../../constants/Breakpoints.scss';
 
 .Modal {
   background: #fff;
   color: $color-font-1;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 2vh;

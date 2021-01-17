@@ -1,4 +1,5 @@
 @import '../../constants/Colors.scss';
+@import '../../constants/Breakpoints.scss';
 
 .ModalImage {
   width: 100%;
@@ -10,9 +11,8 @@
     top: 0.5em;
     cursor: pointer;
     color: $color-font-2;
-
     border: none;
-    font-size: 2em;
+    font-size: 2rem;
     &:hover {
       outline: none;
       color: $color-font-1;
@@ -20,7 +20,12 @@
   }
   &__wrapper {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    @include for-tablet-portrait-up {
+      flex-direction: row;
+      align-items: flex-start;
+    }
   }
   &__info {
     display: flex;
@@ -37,22 +42,20 @@
     margin: 0;
   }
   &__description {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
   &__user {
-    font-size: 0.8em;
+    font-size: 0.8rem;
   }
   &__tags {
-    font-size: 1em;
+    font-size: 1rem;
     padding-top: 1em;
   }
   &__image-container {
     flex-basis: 80%;
   }
   &__image {
-    // max-width: 40%;
-    max-height: 90vh;
-    width: auto;
-    // height: auto;
+    width: 100%;
+    height: auto;
   }
 }

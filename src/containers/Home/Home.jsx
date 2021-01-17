@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="Home">
       <div className="Home__wrapper">
-        <h1 className="Home__title">photosearch</h1>
+        <h1 className="Home__title">PhotoSearch</h1>
         <p className="Home__paragraph">
           Find your perfect image from Unsplash!
         </p>
