@@ -6,7 +6,8 @@ import { ModalImage } from '../../components/ModalImage';
 
 import './style.scss';
 
-const urlAPIdummy = 'API/natureData.json';
+//uncomment if you need static data (query="nature")
+// const urlAPIdummy = 'API/natureData.json';
 
 const Results = ({
   clientId,
@@ -50,14 +51,8 @@ const Results = ({
 
   return (
     <div className="Results">
-      <InputSearch
-        handleSearch={handleSearch}
-        search={search}
-        handleValidate={handleValidate}
-      />
       <div className="Results__wrapper">
         <h3 className="Results__title">
-          {' '}
           {images.length > 0
             ? `Your results for: ${resultsName}`
             : `Sorry, we couldn't find it. Please try again with a different phrase.`}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
 
 import './style.scss';
 
@@ -20,7 +20,7 @@ const Footer = () => {
         </a>
       </div>
       <div className="Footer__rights">
-        <FontAwesomeIcon icon={faHeart} className="Footer__media--small" />
+        <FontAwesomeIcon icon={faCode} className="Footer__media--small" />
         <span>by LukasMod. Cheers!</span>
       </div>
     </footer>

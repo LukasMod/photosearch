@@ -1,20 +1,32 @@
+@import '../../constants/Colors.scss';
+@import '../../constants/Breakpoints.scss';
+
 .InputSearch {
   width: 300px;
   margin: 0 auto;
   position: relative;
-  &__input-wrapper {
-    // width: 300px;
-  }
+  // &__input-wrapper {
+  //   // width: 300px;
+  // }
 
   &__input {
     width: 100%;
     padding: 0.5em;
-    font-size: 1em;
+    font-size: 1.2rem;
+    border-radius: 0.5em;
+    &:focus {
+      // outline: 3px solid $color-font-4;
+      // outline-radius: 0.5em;
+      -webkit-box-shadow: 0px 0px 5px 3px rgba(112, 114, 243, 1);
+      -moz-box-shadow: 0px 0px 5px 3px rgba(112, 114, 243, 1);
+      box-shadow: 0px 0px 5px 3px rgba(112, 114, 243, 1);
+    }
     &--error {
-      border-color: red;
       &:focus,
       &:active {
-        outline: none;
+        -webkit-box-shadow: 0px 0px 5px 3px rgba(222, 16, 16, 1);
+        -moz-box-shadow: 0px 0px 5px 3px rgba(222, 16, 16, 1);
+        box-shadow: 0px 0px 5px 3px rgba(222, 16, 16, 1);
       }
     }
   }

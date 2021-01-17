@@ -6,8 +6,10 @@ const Home = ({ search, handleSearch, handleValidate }) => {
   return (
     <div className="Home">
       <div className="Home__wrapper">
-        <h1 className="Home__title">PhotoSearch from Unsplash</h1>
-        <p className="Home__paragraph">Find your perfect image!</p>
+        <h1 className="Home__title">photosearch</h1>
+        <p className="Home__paragraph">
+          Find your perfect image from Unsplash!
+        </p>
         <InputSearch
           handleSearch={handleSearch}
           search={search}

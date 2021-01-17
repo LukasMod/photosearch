@@ -2,10 +2,31 @@
 
 .Home {
   height: 85vh;
+  background-image: url('./assets/lonely-stone-compressed.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
   @include for-tablet-portrait-up {
     height: 90vh;
   }
   &__wrapper {
     margin: 0 auto;
+    padding: 10em 0;
+  }
+  &__title {
+    font-size: 1rem;
+    text-transform: uppercase;
+
+    @include for-tablet-portrait-up {
+      font-size: 4rem;
+    }
+  }
+  &__paragraph {
+    padding: 1em 0 1em 0;
+    font-size: 1rem;
+
+    @include for-tablet-portrait-up {
+      font-size: 2rem;
+    }
   }
 }

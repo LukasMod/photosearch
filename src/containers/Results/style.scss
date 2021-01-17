@@ -1,8 +1,17 @@
 @import '../../constants/Breakpoints.scss';
+@import '../../constants/Colors.scss';
 .Results {
-  min-height: 85vh;
+  min-height: 75vh;
   @include for-tablet-portrait-up {
-    height: 90vh;
+    min-height: 75vh;
+  }
+  &__title {
+    color: $color-font-1;
+    padding: 0.25em 0;
+    font-size: 1.3rem;
+    @include for-tablet-portrait-up {
+      font-size: 2rem;
+    }
   }
   &__list {
     display: flex;
