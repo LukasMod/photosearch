@@ -65,6 +65,15 @@ const InputSearch = ({ handleSearch, search, handleValidate }) => {
     history.push('/results');
   };
 
+  const performSearch = (text) => {
+    setNotEnoughLetters(false);
+    handleSearch(text);
+    handleValidate(true);
+    hideSuggestion();
+    history.push('/results');
+    searchInput.current.value = '';
+  };
+
   const keyboardNavigation = (e) => {
     switch (e.key) {
       case 'ArrowDown': {
@@ -84,17 +93,9 @@ const InputSearch = ({ handleSearch, search, handleValidate }) => {
         break;
       case 'Enter': {
         if (cursor > -1) {
-          handleSearch(suggestions[cursor]);
-          handleValidate(true);
-          hideSuggestion();
-          searchInput.current.value = '';
+          performSearch(suggestions[cursor]);
         } else if (searchInput.current.value.length > 2) {
-          setNotEnoughLetters(false);
-          handleValidate(true);
-          handleSearch(searchInput.current.value);
-          searchInput.current.value = '';
-          hideSuggestion();
-          history.push('/results');
+          performSearch(searchInput.current.value);
         } else {
           setNotEnoughLetters(true);
           searchInput.current.value = '';
