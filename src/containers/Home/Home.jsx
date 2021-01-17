@@ -2,7 +2,7 @@ import React from 'react';
 import { InputSearch } from '../../components/InputSearch';
 import './style.scss';
 
-const Home = ({ search, handleSearch, handleValidate }) => {
+const Home = () => {
   return (
     <div className="Home">
       <div className="Home__wrapper">
@@ -10,11 +10,7 @@ const Home = ({ search, handleSearch, handleValidate }) => {
         <p className="Home__paragraph">
           Find your perfect image from Unsplash!
         </p>
-        <InputSearch
-          handleSearch={handleSearch}
-          search={search}
-          handleValidate={handleValidate}
-        />
+        <InputSearch />
       </div>
     </div>
   );

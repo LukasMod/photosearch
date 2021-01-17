@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { InputSearch } from '../../components/InputSearch';
+import React, { useState, useEffect, useContext } from 'react';
+import { StoreContext } from '../../store/StoreProvider';
 import { Image } from '../../components/Image';
 import { Modal } from '../../components/Modal';
 import { ModalImage } from '../../components/ModalImage';
 
 import './style.scss';
 
-//uncomment if you need static data (query="nature")
+//uncomment if you need static data with unsplash query="nature"
 // const urlAPIdummy = 'API/natureData.json';
 
-const Results = ({
-  clientId,
-  handleSearch,
-  search,
-  handleValidate,
-  acceptSearch,
-}) => {
+const Results = () => {
+  const { clientId, search, handleValidate, acceptSearch } = useContext(
+    StoreContext
+  );
+
   const [images, setImages] = useState([]);
   const [error, setError] = useState(false);
   const [showedModal, setShowedModal] = useState(false);

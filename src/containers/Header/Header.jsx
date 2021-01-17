@@ -1,17 +1,12 @@
 import React from 'react';
-
 import { InputSearch } from '../../components/InputSearch';
 
 import './style.scss';
 
-const Header = ({ handleSearch, search, handleValidate }) => {
+const Header = () => {
   return (
     <header className="Header">
-      <InputSearch
-        handleSearch={handleSearch}
-        search={search}
-        handleValidate={handleValidate}
-      />
+      <InputSearch />
     </header>
   );
 };

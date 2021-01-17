@@ -1,11 +1,15 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AutoCompleteItem } from '../AutoCompleteItem';
+import { StoreContext } from '../../store/StoreProvider';
+
 import commonWordsData from './commonWords.json';
 
 import './style.scss';
 
-const InputSearch = ({ handleSearch, search, handleValidate }) => {
+const InputSearch = () => {
+  const { handleSearch, search, handleValidate } = useContext(StoreContext);
+
   const history = useHistory();
   const [isVisible, setIsVisible] = useState(false);
   const [cursor, setCursor] = useState(-1);
