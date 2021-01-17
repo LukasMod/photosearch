@@ -7,8 +7,9 @@
   padding: 1em;
   background-color: $color-font-1;
   color: $color-font-3;
-  &a:link,
-  a:visited {
+  & a,
+  & a:link,
+  & a:visited {
     color: $color-font-3;
   }
   &__media-wrapper {
