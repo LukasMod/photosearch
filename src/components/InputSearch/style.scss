@@ -5,18 +5,17 @@
   width: 300px;
   margin: 0 auto;
   position: relative;
-  // &__input-wrapper {
-  //   // width: 300px;
-  // }
-
   &__input {
-    width: 100%;
+    width: 90%;
     padding: 0.5em;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 0.5em;
+    @include for-tablet-portrait-up {
+      padding: 0.5em;
+      font-size: 1.2rem;
+      border-radius: 0.5em;
+    }
     &:focus {
-      // outline: 3px solid $color-font-4;
-      // outline-radius: 0.5em;
       -webkit-box-shadow: 0px 0px 5px 3px rgba(112, 114, 243, 1);
       -moz-box-shadow: 0px 0px 5px 3px rgba(112, 114, 243, 1);
       box-shadow: 0px 0px 5px 3px rgba(112, 114, 243, 1);

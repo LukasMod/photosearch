@@ -15,7 +15,7 @@ const Results = () => {
   );
 
   const [images, setImages] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const [showedModal, setShowedModal] = useState(false);
   const [imageClicked, setImageClicked] = useState({});
   const [resultsName, setResultsName] = useState('');
@@ -25,13 +25,17 @@ const Results = () => {
   useEffect(() => {
     if (acceptSearch) {
       fetch(urlAPI)
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.ok) return response.json();
+          throw new Error(response.status);
+        })
         .then((data) => {
           setImages(data.results);
           handleValidate(false);
           setResultsName(search);
+          setError(false);
         })
-        .catch((error) => setError(true));
+        .catch((error) => setError(error.message));
     }
   }, [acceptSearch, urlAPI, handleValidate, search]);
 
@@ -51,7 +55,9 @@ const Results = () => {
     <div className="Results">
       <div className="Results__wrapper">
         <h3 className="Results__title">
-          {images.length > 0
+          {error
+            ? `We have some problems with server (error: ${error}). Please, wait 5 minutes and try again.`
+            : images.length > 0
             ? `Your results for: ${resultsName}`
             : `Sorry, we couldn't find it. Please try again with a different phrase.`}
         </h3>
